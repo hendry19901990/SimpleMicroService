@@ -1,0 +1,28 @@
+{
+  "name": "SimpleMicroService",
+  "description": "",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hendry19901990/SimpleMicroService.git"
+  },
+  "keywords": [],
+  "author": "Hendry Rodriguez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hendry19901990/SimpleMicroService/issues"
+  },
+  "homepage": "https://github.com/hendry19901990/SimpleMicroService",
+  "dependencies": {
+    "amqplib": "0.8.0",
+    "body-parser": "1.19.0",
+    "cors": "2.8.5",
+    "express": "4.17.1",
+    "sequelize": "6.6.5",
+    "mysql2": "2.2.5",
+    "socket.io": "4.1.3"
+  }
+}
