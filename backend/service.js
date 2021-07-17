@@ -1,6 +1,7 @@
 var express = require("express");
 var cors = require("cors");
 let consumer = require('./Consumer/consumer');
+let getSocket = require('./Socket/socket');
 
 var app = express();
 
@@ -26,6 +27,7 @@ app.get("/health", async(_, res)=>{
 
 app.post('/messages', controller.create);
 
-consumer();
+let ws = getSocket();
+consumer(ws);
 
 app.listen(8080);

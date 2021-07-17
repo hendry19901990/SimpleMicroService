@@ -1,13 +1,31 @@
 const app = require('express')();
-const server = require('http').Server(app);
-const io = require('socket.io')(server);
+var cors = require("cors");
 
-module.exports = {
+app.use(cors()); 
 
-    socket : any = io.on('connection', (socket) => {
-        console.log('User Socket Connected');
-        socket.on("disconnect", () => console.log(`${socket.id} User disconnected.`));
-    })
+const http = require('http');
+const socketIo = require('socket.io');
+
+const getSocket = () => {
+  const server = http.createServer(app);
+  const io = socketIo(server, {
+        cors: {
+            origins: ['http://localhost:4200']
+        }
+    });
+
+  let ws = io.on('connection', socket => {
+    console.log('User connected!');
+
+
+    socket.on('disconnect', () => {
+      console.log('User disconnected!');
+      
+    });
+  });
+
+  server.listen(4444, () => console.log(`Socket running on port 4444`));
+  return ws;
 };
 
-server.listen(9090);
+module.exports = getSocket;

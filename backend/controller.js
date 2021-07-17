@@ -14,7 +14,7 @@ controller.create = async ( req, res) =>{
         req.body.message.indexOf("c") != -1 || 
         req.body.message.indexOf("d") != -1 ||
         req.body.message.indexOf("t") != -1){
-          return res.status(500).send({});
+          return res.status(400).send({});
        }
 
        setTimeout(async() => {
@@ -23,7 +23,7 @@ controller.create = async ( req, res) =>{
             content: req.body.message
           })
           .then(function(data){
-            rabbitMQ("updatedResult", JSON.stringify({ID: data.id}));
+            rabbitMQ("updatedResult", JSON.stringify({id: data.id, content: req.body.message}));
             return res;
           })
           .catch(e =>{
@@ -33,7 +33,7 @@ controller.create = async ( req, res) =>{
          
        }, 5000);
 
-       res.json({ success: true, message:"created successful" });
+       res.json({ success: true, result:"created successful" });
   
     } catch (e) {
       console.log(e);
