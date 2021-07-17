@@ -1,10 +1,12 @@
 {
   "name": "SimpleMicroService",
-  "description": "",
+  "private": true,
+  "description": "Simple MicroService",
   "version": "1.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:dev": "node server.js"
   },
+  "main": "server.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/hendry19901990/SimpleMicroService.git"
@@ -21,8 +23,8 @@
     "body-parser": "1.19.0",
     "cors": "2.8.5",
     "express": "4.17.1",
-    "sequelize": "6.6.5",
     "mysql2": "2.2.5",
-    "socket.io": "4.1.3"
+    "sequelize": "6.6.5",
+    "socket.io": "^4.1.3"
   }
 }

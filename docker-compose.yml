@@ -1,0 +1,63 @@
+version: '3'
+services:
+
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+        - 5672:5672
+        - 15672:15672
+    volumes:
+        - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+        - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+        - app-network
+
+  #MySQL Service
+  db:
+    image: mysql:5.7.22
+    container_name: db
+    restart: unless-stopped
+    tty: true
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: messages_db
+      MYSQL_ROOT_PASSWORD: test
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - dbdata:/var/lib/mysql/
+     # - ./mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - app-network
+
+  backend:
+    build: ./backend
+    ports:
+      - 8080:8080
+      - 4444:4444
+    restart: on-failure
+    command: bash -c "sleep 10; node server.js"
+    depends_on:
+        - db
+        - rabbitmq
+    networks:
+      - app-network
+  ui:
+    build: ./UI
+    ports:
+      - 80:80
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+#Docker Networks
+networks:
+  app-network:
+    driver: bridge
+#Volumes
+volumes:
+  dbdata:
+    driver: local
