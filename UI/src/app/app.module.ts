@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
-const config: SocketIoConfig = { url: 'localhost:4444', options: {} };
+const config: SocketIoConfig = { url: 'backend:4444', options: {} };
 
 @NgModule({
   declarations: [

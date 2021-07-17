@@ -7,7 +7,7 @@ import { retry, catchError, map } from 'rxjs/operators';
 import { Socket } from 'ngx-socket-io';
 @Injectable({ providedIn: 'root' })
 export class MessageService {
-    baseUrl: string = "http://localhost:8080/messages";
+    baseUrl: string = "http://backend:8080/messages";
 
     constructor(private httpClient: HttpClient, private socket: Socket) { }
 

@@ -1,6 +1,6 @@
 const amqp = require('amqplib/callback_api');
 
-const rabbitUrl = 'amqp://localhost:5672';
+const rabbitUrl = 'amqp://rabbitmq:5672';
 
 const sendRabbitMQ = function sendRabbitMQ(queueName, data) {
     amqp.connect(rabbitUrl, function (error0, connection) {
