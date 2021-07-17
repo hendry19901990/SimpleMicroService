@@ -7,7 +7,7 @@ Docker-compose
 
 ### Viewing the App in Action
 
-Just run the following command:
+Just run at the current directory, the following command:
 ```bash
 docker-compose up -d
 ```
