@@ -12,4 +12,4 @@ Just run the following command:
 docker-compose up -d
 ```
 
-You can go through the web on htt://localhost
+You can go through the web on http://localhost
