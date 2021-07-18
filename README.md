@@ -1,13 +1,13 @@
-# SimpleMicroService
+# Simple MicroService
 
-###Pre-requites
+### Pre-requites
 
-Docker
-Docker-compose
+- Docker
+- Docker-compose
 
 ### Viewing the App in Action
 
-Just run at the current directory, the following command:
+Just run the following command at the current directory:
 ```bash
 docker-compose up -d
 ```
